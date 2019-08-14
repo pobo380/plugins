@@ -611,6 +611,9 @@ FourCharCode const videoFormat = kCVPixelFormatType_32BGRA;
   NSParameterAssert(_videoWriterInput);
   _videoWriterInput.expectsMediaDataInRealTime = YES;
 
+  #define DEGREES_TO_RADIANS(x) (M_PI * (x) / 180.0)
+  _videoWriterInput.transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(-90));
+
   // Add the audio input
   if (_enableAudio) {
     AudioChannelLayout acl;
